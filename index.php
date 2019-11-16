@@ -1,12 +1,10 @@
 <?php
-    /*This is the start up config and stuff...*/
+
+    /*  --- INDEX ---
+        Author: Robin Rose
+        Email: rwrose.projects@gmail.com
+        Title: Vira (TBD)
+        Description: Tumblr is shitty and I wanna build out some sort of platform to replace it.
+    */
 
 ?>
-
-<html>
-
-    This is the page we start on no if ands or buts
-
-    Test change for git through VS Code
-
-</html>
