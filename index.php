@@ -8,3 +8,7 @@
 	*/
 
 ?>
+
+<div id="mount">
+
+</div>
