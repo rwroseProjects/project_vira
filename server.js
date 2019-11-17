@@ -7,4 +7,3 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // Required variables for routing API
 require("./api/routeAPI")(app);
-//require("./api/getData")(app);

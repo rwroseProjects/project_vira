@@ -1,6 +1,7 @@
 var fs = require('fs');
 
-/*  routeAPI Module
+/*
+	routeAPI Module
 	This module routes all API's through for the Express Server.
 */
 
@@ -25,13 +26,14 @@ var walkRequire = function(dir, app) {
 }
 
 module.exports = function(app) {
-	// Prior version. Left if for context. Non recursive.
-	// fs.readdirSync(__dirname).forEach(function(file) {
-	// 	if (file == "routeAPI.js") return;
-	// 	var name = file.substr(0, file.indexOf('.'));
-	// 	require("./"+name)(app);
-	// });
+	
+	/* Prior version. Left if for context. Non recursive.
+	fs.readdirSync(__dirname).forEach(function(file) {
+		if (file == "routeAPI.js") return;
+		var name = file.substr(0, file.indexOf('.'));
+		require("./"+name)(app);
+	});
+	*/
 
 	walkRequire(__dirname, app);
-
 }
