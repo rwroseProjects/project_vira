@@ -1,0 +1,22 @@
+{
+  "name": "vira",
+  "version": "1.0.0",
+  "description": "The Vira Social Media App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rwroseProjects/project_vira.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rwroseProjects/project_vira/issues"
+  },
+  "homepage": "https://github.com/rwroseProjects/project_vira#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
