@@ -1,8 +1,6 @@
 module.exports = function(app) {
 
-	console.log("this");
-
-	app.get('/api/getData', function(req, res) {
+	app.get('/api/loginUser', function(req, res) {
 		res.send({ express: 'This is new data'});
 	});
 
