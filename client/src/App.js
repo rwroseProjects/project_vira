@@ -16,7 +16,7 @@ state = {
   }
     // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
   callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
+    const response = await fetch('/api/loginUser');
     const body = await response.json();
 
     if (response.status !== 200) {
@@ -33,8 +33,8 @@ state = {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         {
-          // Render the newly fetched data inside of this.state.data}
-        } 
+        // Render the newly fetched data inside of this.state.data 
+        }
         <p className="App-intro">{this.state.data}</p>
       </div>
     );
