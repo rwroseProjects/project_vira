@@ -10,5 +10,5 @@
 ?>
 
 <div id="mount">
-
+	hello
 </div>
