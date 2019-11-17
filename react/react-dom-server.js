@@ -1,3 +1,5 @@
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 /**
  * ReactDOMServer v0.14.3
  *
@@ -10,18 +12,18 @@
  *
  */
 // Based off https://github.com/ForbesLindesay/umd/blob/master/template.js
-;(function(f) {
+;(function (f) {
   // CommonJS
-  if (typeof exports === "object" && typeof module !== "undefined") {
+  if ((typeof exports === "undefined" ? "undefined" : _typeof(exports)) === "object" && typeof module !== "undefined") {
     module.exports = f(require('react'));
 
-  // RequireJS
+    // RequireJS
   } else if (typeof define === "function" && define.amd) {
     define(['react'], f);
 
-  // <script>
+    // <script>
   } else {
-    var g
+    var g;
     if (typeof window !== "undefined") {
       g = window;
     } else if (typeof global !== "undefined") {
@@ -36,7 +38,6 @@
     }
     g.ReactDOMServer = f(g.React);
   }
-
-})(function(React) {
+})(function (React) {
   return React.__SECRET_DOM_SERVER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 });
