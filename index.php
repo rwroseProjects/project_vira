@@ -12,3 +12,5 @@
 <div id="mount">
 	hello
 </div>
+
+<script></script>
