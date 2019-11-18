@@ -34,6 +34,5 @@ module.exports = function(app) {
 		require("./"+name)(app);
 	});
 	*/
-
 	walkRequire(__dirname, app);
 }
