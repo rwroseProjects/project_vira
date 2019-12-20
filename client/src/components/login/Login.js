@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -46,6 +46,46 @@ const useStyles = makeStyles(theme => ({
 export default function Login() {
 	const classes = useStyles();
 
+	const [authID, setAuthID] = useState('');
+	const [authPassword, setAuthPassword] = useState('');
+	const [errorID, setErrorID] = useState(false);
+	const [errorPassword, setErrorPassword] = useState(false);
+
+	const validate = (event) => {
+		event.preventDefault();
+		
+		// Check if the password is validated and if not set isValidated to false
+		var isValidated = true;
+		if (authID === "") { 
+			isValidated = false; 
+			setErrorID(true);
+		}
+		if (authPassword === "") {
+			isValidated = false;
+			setErrorPassword(true);
+		}
+		
+		// Check validated
+		if (!isValidated) {
+			console.log("NO VALIDATION BAD BOY");
+			return;
+		}
+
+		console.log("VALIDATED!");
+		alert("VALIDATED");
+
+	}
+
+	const handleIDChange = (event) => {
+		setAuthID(event.target.value);
+		setErrorID(false);
+	}
+
+	const handlePasswordChange = (event) => {
+		setAuthPassword(event.target.value);
+		setErrorPassword(false);
+	}
+
 	return (
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
@@ -56,7 +96,7 @@ export default function Login() {
 				<Typography component="hi" variant="h5">
 					Sign in	
 				</Typography>
-				<form className={classes.form} noValidate>
+				<form className={classes.form} onSubmit={validate} noValidate >
 					<TextField
 						variant="outlined"
 						margin="normal"
@@ -65,12 +105,16 @@ export default function Login() {
 						id="auth_id"
 						label="Username"
 						name="auth_id"
-						autoComplete="Email, Phone, or Username"
+						autoComplete="off"
 						autoFocus
+						value={authID}
+						onChange={handleIDChange}
+						error={errorID}
 					/>
 					<TextField
 						variant="outlined"
 						margin="normal"
+						type="password"
 						required
 						fullWidth
 						id="auth_password"
@@ -78,6 +122,9 @@ export default function Login() {
 						name="auth_password"
 						autoComplete="current-password"
 						autoFocus
+						value={authPassword}
+						onChange={handlePasswordChange}
+						error={errorPassword}
 					/>
 					<FormControlLabel 
 						control={<Checkbox value="remember" color="primary" />}
@@ -99,7 +146,7 @@ export default function Login() {
 							</Link>
 						</Grid>
 						<Grid item>
-							<Link href="#" variant="body2">
+							<Link href="/CreateUser" variant="body2">
 								{"Don't have an account? Sign up"}
 							</Link>
 						</Grid>
