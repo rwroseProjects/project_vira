@@ -1,32 +1,21 @@
-var mysql  = require('mysql');
+mysqlFunctions = require(process.cwd() + '/includes/functions/mysqlFunctions')
 
 module.exports = function(app) {
     
-    app.get('/api/user/loginUser', function(request, response) {
+    // Establish the new functions container
+    sql = new mysqlFunctions()
 
-        var con = mysql.createConnection({
-            host: "vira-dev.cixbdvh7emms.us-east-2.rds.amazonaws.com",
-            user: "admin",
-            password: "Q1xbXh774HFjHooxeHwa",
-            database: "vira"
-        });
+    app.post('/api/user/loginUser', function(request, response) {
 
-        con.connect(function(err) {
-            if (err) throw err;
-            con.query("SELECT * FROM vira.users", function (err, result, fields) {
-                if (err) throw err;
+        
+        
+        sql.mysqlQuery("SELECT * FROM vira.users")
+            .then((res) => {
                 response.send({
-                    success: true,
-                    message: "Data successfully retrieved!",
-                    result: result
+                    test_response: 'This is a test',
+                    request: res
                 });
             });
-        });
-
-        // response.send({
-        //     test_response: 'This is a test',
-        //     request: request
-        // });
 
     });
 

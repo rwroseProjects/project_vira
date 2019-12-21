@@ -29,7 +29,9 @@ const useStyles = makeStyles(theme => ({
 
 // HERE FOR NOW AS EXAMPLE
 const callAPI = async () => {
-	const response = await fetch('/api/user/loginUser');
+	const response = await fetch('/api/user/loginUser', {
+		method: 'POST'
+	});
 	const body = await response.json();
 
 	if (response.status !== 200) {
