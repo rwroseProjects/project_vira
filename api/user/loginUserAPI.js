@@ -10,6 +10,8 @@ module.exports = function(app) {
 
         var body = request.body;
 
+        console.log(request.body);
+
         var password = security.pepper + body.password;
         var email = body.email;
         
