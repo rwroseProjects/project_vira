@@ -43,6 +43,23 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const createRequest = async (data) => {
+	console.log(JSON.stringify(data));
+	const response = await fetch('/api/user/loginUser', {
+		method: 'POST',
+		cache: 'no-cache',
+		headers: { "Content-Type": "application/json" },
+		redirect: 'follow',
+		body: JSON.stringify(data)
+	});
+	const body = await response.json();
+
+	if (response.status !== 200) {
+		throw Error(body.message);
+	}
+	return body;
+}
+
 export default function Login() {
 	const classes = useStyles();
 
@@ -50,6 +67,8 @@ export default function Login() {
 	const [authPassword, setAuthPassword] = useState('');
 	const [errorID, setErrorID] = useState(false);
 	const [errorPassword, setErrorPassword] = useState(false);
+	const [authIDText, setAuthIDText] = useState(false);
+	const [authPasswordText, setAuthPasswordText] = useState(false);
 
 	const validate = (event) => {
 		event.preventDefault();
@@ -59,10 +78,12 @@ export default function Login() {
 		if (authID === "") { 
 			isValidated = false; 
 			setErrorID(true);
+			setAuthIDText("Please enter your username or email")
 		}
 		if (authPassword === "") {
 			isValidated = false;
 			setErrorPassword(true);
+			setAuthPasswordText("Please enter a password");
 		}
 		
 		// Check validated
@@ -71,19 +92,27 @@ export default function Login() {
 			return;
 		}
 
-		console.log("VALIDATED!");
-		alert("VALIDATED");
+		createRequest({ email: authID, password: authPassword })
+			.then((res) => {
+				if (res.success) {
+					alert("LOGIN SUCCESSFUL!");
+				} else {
+					alert("LOGIN FAILED");
+				}
+			});
 
 	}
 
 	const handleIDChange = (event) => {
 		setAuthID(event.target.value);
 		setErrorID(false);
+		setAuthIDText(false);
 	}
 
 	const handlePasswordChange = (event) => {
 		setAuthPassword(event.target.value);
 		setErrorPassword(false);
+		setAuthPasswordText(false);
 	}
 
 	return (
@@ -110,6 +139,7 @@ export default function Login() {
 						value={authID}
 						onChange={handleIDChange}
 						error={errorID}
+						helperText={authIDText}
 					/>
 					<TextField
 						variant="outlined"
@@ -125,6 +155,7 @@ export default function Login() {
 						value={authPassword}
 						onChange={handlePasswordChange}
 						error={errorPassword}
+						helperText={authPasswordText}
 					/>
 					<FormControlLabel 
 						control={<Checkbox value="remember" color="primary" />}
@@ -146,7 +177,7 @@ export default function Login() {
 							</Link>
 						</Grid>
 						<Grid item>
-							<Link href="/CreateUser" variant="body2">
+							<Link href="/CreateAccount" variant="body2">
 								{"Don't have an account? Sign up"}
 							</Link>
 						</Grid>

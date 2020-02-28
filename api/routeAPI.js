@@ -19,7 +19,7 @@ var walkRequire = function(dir, app) {
 		} else {
 			if ((file.split(".").pop()) === "js") {
 				require(file)(app);
-				console.log(file);
+				// console.log(file);
 			}
 		}
 	}) 

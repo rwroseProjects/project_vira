@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 import './index.css';
 import App from './components/app/App';
-import CreateUser from './components/createUser/CreateUser'
+import CreateAccount from './components/createUser/CreateAccount'
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
     <Router>
         <div>
             <Route exact path="/" component={App} />
-            <Route path="/CreateUser" component={CreateUser} />
+            <Route path="/CreateAccount" component={CreateAccount} />
         </div>
     </Router>
 )
